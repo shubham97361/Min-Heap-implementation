@@ -12,8 +12,9 @@ using namespace std;
 void swap(int *a,int *b){
 	int temp = *a;
 	*a = *b;
-	*a = temp;
+	*b = temp;
 }
+
 
 class MinHeap{
 	int *harr;
@@ -78,7 +79,8 @@ void MinHeap::insertKey(int k){
 	if(heap_size==capacity) return;
 	heap_size++;
 	harr[heap_size-1] = k;
-	MinHeapify(parent(heap_size-1));
+	swap(harr[0],harr[heap_size-1]);
+	MinHeapify(0);
 }
 
 void MinHeap::MinHeapify(int i){
