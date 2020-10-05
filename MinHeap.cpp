@@ -79,8 +79,11 @@ void MinHeap::insertKey(int k){
 	if(heap_size==capacity) return;
 	heap_size++;
 	harr[heap_size-1] = k;
-	swap(harr[0],harr[heap_size-1]);
-	MinHeapify(0);
+	while (i != 0 && harr[parent(i)] > harr[i]) 
+    	{ 
+       	     swap(&harr[i], &harr[parent(i)]); 
+       	     i = parent(i); 
+    	} 
 }
 
 void MinHeap::MinHeapify(int i){
